@@ -1,4 +1,5 @@
-# PLP-IStar
+# PLP-RASTREABILIDADE-DE-REQUISITOS
+
 ## CIn - Centro de Informática - UFPE
 ## Mestrado Acadêmico
 ### Projeto para a disciplina de Paradigmas de Linguagens de Programação (IN1007)
@@ -33,6 +34,7 @@
 
 
 
-###Tema : iStar
+###Tema : RASTREABILIDADE-DE-REQUISITOS
+
 
 
