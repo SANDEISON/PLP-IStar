@@ -3,10 +3,10 @@
 Projeto para a disciplina de Paradigmas de Linguagens de Programação (IN1007)
 
 ## Disciplina
-  Professor: [Augusto Sampaio](https://www.cin.ufpe.br/~acas/index.php "Professor Augusto Sampaio")
+  - Professor: [Augusto Sampaio](https://www.cin.ufpe.br/~acas/index.php "Professor Augusto Sampaio")
   | Email : <acas@cin.ufpe.br>
 
-  Disciplina : [Paradigmas de Linguagens de Programação](https://www.cin.ufpe.br/~in1007/ "Acesse Aqui!")
+  - Disciplina : [Paradigmas de Linguagens de Programação](https://www.cin.ufpe.br/~in1007/ "Acesse Aqui!")
 
 ## Equipe
 
@@ -46,11 +46,14 @@ Expressao ::= [Valor](/Funcional2/src/lf2/plp/expressions2/expression/Valor.java
 
 Valor ::= [ValorConcreto](/Funcional2/src/lf2/plp/expressions2/expression/ValorConcreto.java) | [ValorAbstrato](/Funcional2/src/lf2/plp/functional2/expression/ValorAbstrato.java)
 
-ValorAbstrato ::= [ValorFuncao](/Funcional2/src/lf2/plp/functional2/expression/ValorFuncao.java)
+
+ValorAbstrato ::= [ValorFuncao](/Funcional2/src/lf2/plp/functional2/expression/ValorFuncao.java) | ValorRequisito
 
 ValorConcreto ::= [ValorInteiro](/Funcional2/src/lf2/plp/expressions2/expression/ValorInteiro.java) | [ValorBooleano](/Funcional2/src/lf2/plp/expressions2/expression/ValorBooleano.java) | [ValorString](/Funcional2/src/lf2/plp/expressions2/expression/ValorString.java)
 
-ValorFuncao ::= "fn" ListId "." Expressao
+ValorRequisito ::= "rf" ListId
+
+ValorFuncao ::= ValorRequisito "fn" ListId "." Expressao
 
 ExpUnaria ::= ["-" Expressao](/Funcional2/src/lf2/plp/expressions2/expression/ExpMenos.java) | ["not" Expressao](/Funcional2/src/lf2/plp/expressions2/expression/ExpNot.java) | ["length" Expressao](/Funcional2/src/lf2/plp/expressions2/expression/ExpLength.java)
 
@@ -76,7 +79,7 @@ DeclaracaoFuncional ::= [DecVariavel](/Funcional2/src/lf2/plp/functional1/declar
 
 DecVariavel ::= "var" Id "=" Expressao
 
-DecFuncao ::= "fun" ListId "=" Expressao
+DecFuncao ::= ListId "fun" ListId "=" Expressao
 
 DecComposta ::= DeclaracaoFuncional "," DeclaracaoFuncional
 
