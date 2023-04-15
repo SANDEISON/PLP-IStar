@@ -15,14 +15,36 @@ Projeto para a disciplina de Paradigmas de Linguagens de Programação (IN1007)
   - [Abimael Santos](https://github.com/MaelSantos "Abimael Santos")
   | Email : <ajfs@cin.ufpe.br>
 
-## Objetivo
+# Contextualização
 
-Estender a Linguagem Funcional 2 para aceitar um ID antes da função, de modo que seja possível identificar a qual requisito pertence cada função, com a finalidade de ao final da execução gerar um relatório informando a porcentagem que aquele requisito foi empregado.
+## Requisitos
+
+Especificação do que se deve ser implementado, são descrições de como o sistema deve se corportar, ou uma propriedade ou atributo do sistema, também podem ser uma restrição do sistema.
+
+- *Requisitos Funcionais:* Define os serviços que o sistema deve prover, o comportamento do sistema
+- *Requisitos de Qualidade (Não-Funcionais):* Propriedades de qualidade de todo o sistema, de um componente, de um serviço ou uma função.
+- *Requisitos Organizacionais:* Metas da empresa, políticas e estratégias adotadas, assim como também restrições.
+
+## Rastreabilidade
+
+Capacidade de rastrear um elemento de projeto para outros elementos de projeto relacionados. Consiste na identificação de relações entre requisitos, suas fontes ou artefatos do sistema
+
+- Finalidade da Rastreabilidade
+  - Identificação de requisitos incompletos ou não implementados
+  - Compreensão dos relacionamentos entre requisitos, artefatos, arquitetura e implementação 
+  - Compreender a origem dos requisitos
+  - Avaliar o impacto no projeto da mudança em um requisito
+
+# Objetivo
+
+Estender a Linguagem Funcional 2 para aceitar um identificador antes da função, de modo que seja possível identificar a qual requisito pertence cada função, com a finalidade de ao final da execução gerar um relatório informando a porcentagem que aquele requisito foi empregado.
 
 ## Atividades
 
-- Adicionar ID antes da declaração da função para vincular ao requisito
-- Gerar relatório ao final da execução
+- Adicionar identificador antes da declaração da função para vincular ao requisito
+- Rastrear todos as funções ligadas a determinado requisito
+- Rastrear requisitos dependentes
+- Gerar um relatório ao final da execução
  
 # BNF
 
@@ -47,13 +69,11 @@ Expressao ::= [Valor](/Funcional2/src/lf2/plp/expressions2/expression/Valor.java
 Valor ::= [ValorConcreto](/Funcional2/src/lf2/plp/expressions2/expression/ValorConcreto.java) | [ValorAbstrato](/Funcional2/src/lf2/plp/functional2/expression/ValorAbstrato.java)
 
 
-ValorAbstrato ::= [ValorFuncao](/Funcional2/src/lf2/plp/functional2/expression/ValorFuncao.java) | ValorRequisito
+ValorAbstrato ::= [ValorFuncao](/Funcional2/src/lf2/plp/functional2/expression/ValorFuncao.java)
 
 ValorConcreto ::= [ValorInteiro](/Funcional2/src/lf2/plp/expressions2/expression/ValorInteiro.java) | [ValorBooleano](/Funcional2/src/lf2/plp/expressions2/expression/ValorBooleano.java) | [ValorString](/Funcional2/src/lf2/plp/expressions2/expression/ValorString.java)
 
-ValorRequisito ::= "rf" ListId
-
-ValorFuncao ::= ValorRequisito "fn" ListId "." Expressao
+ValorFuncao ::= "fn" ListId "." Expressao
 
 ExpUnaria ::= ["-" Expressao](/Funcional2/src/lf2/plp/expressions2/expression/ExpMenos.java) | ["not" Expressao](/Funcional2/src/lf2/plp/expressions2/expression/ExpNot.java) | ["length" Expressao](/Funcional2/src/lf2/plp/expressions2/expression/ExpLength.java)
 
@@ -77,9 +97,13 @@ DeclaracaoFuncional ::= [DecVariavel](/Funcional2/src/lf2/plp/functional1/declar
 
 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;   | [DecComposta](/Funcional2/src/lf2/plp/functional1/declaration/DecComposta.java)
 
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;   | DecRequisito
+
 DecVariavel ::= "var" Id "=" Expressao
 
-DecFuncao ::= ListId "fun" ListId "=" Expressao
+DecRequisito ::= "rf" Listd
+
+DecFuncao ::= DecRequisito "fun" ListId "=" Expressao
 
 DecComposta ::= DeclaracaoFuncional "," DeclaracaoFuncional
 
