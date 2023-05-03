@@ -29,10 +29,12 @@ import lf2.plp.functional2.expression.ValorFuncao;
 public class DecFuncao implements DeclaracaoFuncional {
 	private Id id;
 	private ValorFuncao valorFuncao;
+	private DecRequisito decRequisito;
 
-	public DecFuncao(Id idFun, ValorFuncao valorFuncao) {
+	public DecFuncao(Id idFun, ValorFuncao valorFuncao, DecRequisito decRequisito) {
 		this.id = idFun;
 		this.valorFuncao = valorFuncao;
+		this.decRequisito = decRequisito;
 	}
 
 	/**
@@ -42,7 +44,7 @@ public class DecFuncao implements DeclaracaoFuncional {
 	 */
 	@Override
 	public String toString() {
-		return String.format("fun %s (%s) = %s", id, listToString(valorFuncao
+		return String.format("%s fun %s (%s) = %s", decRequisito.toString(), id, listToString(valorFuncao
 				.getListaId(), ","), getExpressao());
 	}
 
@@ -56,6 +58,10 @@ public class DecFuncao implements DeclaracaoFuncional {
 
 	public ValorFuncao getFuncao() {
 		return valorFuncao;
+	}
+
+	public DecRequisito getDecRequisito() {
+		return decRequisito;
 	}
 
 	/**
@@ -133,7 +139,7 @@ public class DecFuncao implements DeclaracaoFuncional {
 	}
 
 	public DecFuncao clone() {
-		return new DecFuncao(this.id.clone(), this.valorFuncao.clone());
+		return new DecFuncao(this.id.clone(), this.valorFuncao.clone(), this.decRequisito.clone());
 	}
 
 	@Override

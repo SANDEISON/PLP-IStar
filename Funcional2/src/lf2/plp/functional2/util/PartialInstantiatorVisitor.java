@@ -195,7 +195,7 @@ public class PartialInstantiatorVisitor {
 		novasVariaveisLocais.add(declaracao.getId());
 		ValorFuncao novaExpressao = (ValorFuncao) _visitValorFuncao(declaracao
 				.getFuncao(), ambiente, novasVariaveisLocais);
-		DecFuncao resultado = new DecFuncao(declaracao.getId(), novaExpressao);
+		DecFuncao resultado = new DecFuncao(declaracao.getId(), novaExpressao, declaracao.getDecRequisito());
 		return resultado;
 	}
 

@@ -101,7 +101,7 @@ DeclaracaoFuncional ::= [DecVariavel](/Funcional2/src/lf2/plp/functional1/declar
 
 DecVariavel ::= "var" Id "=" Expressao
 
-DecRequisito ::= "rf" Listd
+DecRequisito ::= "req" Listd
 
 DecFuncao ::= DecRequisito "fun" ListId "=" Expressao
 
