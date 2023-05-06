@@ -1,1 +1,3 @@
-(let fun dec n = if (n==0) then 0 else n + dec(n-1) in dec)(5)
+let req calc fun sum x y = x + y, 
+    req calc fun sub x y = x - y
+        in sum(5, 2)

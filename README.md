@@ -97,7 +97,7 @@ DeclaracaoFuncional ::= [DecVariavel](/Funcional2/src/lf2/plp/functional1/declar
 
 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;   | [DecComposta](/Funcional2/src/lf2/plp/functional1/declaration/DecComposta.java)
 
-&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;   | DecRequisito
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;   | [DecRequisito](/Funcional2/src/lf2/plp/functional2/declaration/DecRequisito.java)
 
 DecVariavel ::= "var" Id "=" Expressao
 

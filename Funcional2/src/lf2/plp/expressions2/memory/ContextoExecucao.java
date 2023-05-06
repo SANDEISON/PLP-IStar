@@ -28,6 +28,8 @@ public class ContextoExecucao extends Contexto<Valor>
 		
 		retorno.setPilha(novaPilha);
 		
+		System.out.println(retorno);
+		
 		return retorno;
 	}
 }
