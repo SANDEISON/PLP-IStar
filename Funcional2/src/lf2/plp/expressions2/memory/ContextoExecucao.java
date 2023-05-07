@@ -35,9 +35,17 @@ public class ContextoExecucao extends Contexto<Valor> implements AmbienteExecuca
 			}
 		}
 
-		System.out.println(pilha);
-		System.out.println(requisitos);
+	}
 
+	public void addFuncaoUsada(String funcoes) {
+
+		for (List<Id> ids : requisitos.values()) {
+			for (Id id : ids) {
+				if (funcoes.contains(id.toString())) {
+					funcoesUtilizadas.add(id);
+				}
+			}
+		}
 	}
 
 	public String rastrearRequisitos() {
@@ -45,7 +53,16 @@ public class ContextoExecucao extends Contexto<Valor> implements AmbienteExecuca
 		String retorno = "";
 
 		for (Id id : requisitos.keySet()) {
-			retorno += "as funções " + requisitos.get(id) + " pertencem ao requisito " + id + "\n";
+			List<Id> funcs = requisitos.get(id);
+
+			float contador = 0;
+			for (Id f : funcoesUtilizadas) {
+				if (funcs.contains(f))
+					contador++;
+			}
+
+			retorno += "\n - as funções " + funcs + " pertencem ao requisito " + id + "\n" + 
+			" - o requisito " + id + " está sendo utilizado " + (contador / funcs.size()) * 100 + "%\n";
 		}
 
 		return retorno;

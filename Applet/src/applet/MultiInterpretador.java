@@ -154,7 +154,8 @@ public class MultiInterpretador {
 		messageBoard.setText("sintaxe verificada com sucesso!\n");
 		Valor valorFinal = prog.executar();
 		messageBoard.append("resultado = " + valorFinal.toString() + "\n\n");
-		messageBoard.append("requisitos:\n " + prog.getRetornoRequisito());
+		messageBoard.append("requisitos:" + prog.getRetornoRequisito());
+
 	}
 
 //	private void interpretarFunc3(InputStream fis) throws Exception {

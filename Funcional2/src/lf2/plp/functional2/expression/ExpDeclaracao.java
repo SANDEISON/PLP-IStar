@@ -49,6 +49,9 @@ public class ExpDeclaracao implements Expressao {
 		declaracao.elabora(ambiente,aux);
 		declaracao.incluir(ambiente,aux);
 		aux.restaura();
+		
+		((ContextoExecucao) ambiente).addFuncaoUsada(expressao.toString());
+		
 		Valor vresult = expressao.avaliar(ambiente);
 		
 		if(vresult instanceof ValorFuncao)

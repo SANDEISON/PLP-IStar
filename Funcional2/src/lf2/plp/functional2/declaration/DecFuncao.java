@@ -4,22 +4,18 @@ import static lf2.plp.expressions1.util.ToStringProvider.listToString;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import lf2.plp.expressions1.util.Tipo;
 import lf2.plp.expressions2.expression.Expressao;
 import lf2.plp.expressions2.expression.Id;
-import lf2.plp.expressions2.expression.Valor;
 import lf2.plp.expressions2.memory.AmbienteCompilacao;
 import lf2.plp.expressions2.memory.AmbienteExecucao;
 import lf2.plp.expressions2.memory.ContextoExecucao;
 import lf2.plp.expressions2.memory.VariavelJaDeclaradaException;
 import lf2.plp.expressions2.memory.VariavelNaoDeclaradaException;
 import lf2.plp.functional1.declaration.DeclaracaoFuncional;
-import lf2.plp.functional1.memory.ContextoExecucaoFuncional;
 import lf2.plp.functional1.util.TipoFuncao;
 import lf2.plp.functional1.util.TipoPolimorfico;
-import lf2.plp.functional2.Programa;
 import lf2.plp.functional2.expression.ValorFuncao;
 
 /**
@@ -148,7 +144,7 @@ public class DecFuncao implements DeclaracaoFuncional {
 	@Override
 	public void elabora(AmbienteExecucao amb, AmbienteExecucao aux) throws VariavelJaDeclaradaException {
 		aux.map(getId(), getFuncao());
-		
+
 		//passos a mais
 		AmbienteExecucao ambienteClone = amb.clone();
 		ambienteClone.incrementa();
@@ -159,7 +155,6 @@ public class DecFuncao implements DeclaracaoFuncional {
 	@Override
 	public void elabora(AmbienteCompilacao amb, AmbienteCompilacao aux) throws VariavelJaDeclaradaException {
 		aux.map(getId(), getTipo(amb));
-		
 	}
 
 	@Override

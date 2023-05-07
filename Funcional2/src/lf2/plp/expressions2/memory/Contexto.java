@@ -35,8 +35,8 @@ public class Contexto<T> {
 	/**
 	 * Mapeia o id no valor dado.
 	 * 
-	 * @exception VariavelJaDeclaradaException
-	 *                se j� existir um mapeamento do identificador nesta tabela.
+	 * @exception VariavelJaDeclaradaException se j� existir um mapeamento do
+	 *                                         identificador nesta tabela.
 	 */
 	public void map(Id idArg, T valorId) throws VariavelJaDeclaradaException {
 		try {
@@ -51,9 +51,8 @@ public class Contexto<T> {
 	/**
 	 * Retorna o valor mapeado ao id dado.
 	 * 
-	 * @exception VariavelNaoDeclaradaException
-	 *                se n�o existir nenhum valor mapeado ao id dado nesta
-	 *                tabela.
+	 * @exception VariavelNaoDeclaradaException se n�o existir nenhum valor mapeado
+	 *                                          ao id dado nesta tabela.
 	 */
 	public T get(Id idArg) throws VariavelNaoDeclaradaException {
 		try {
@@ -88,30 +87,26 @@ public class Contexto<T> {
 	/**
 	 * Sets the pilhaValor.
 	 * 
-	 * @param pilha
-	 *            The pilhaValor to set
+	 * @param pilha The pilhaValor to set
 	 */
 	protected void setPilha(Stack<HashMap<Id, T>> pilha) {
 		this.pilha = pilha;
 	}
 
 	/*
-	public Contexto<Valor> clone(){
-		Contexto<Valor> retorno = new Contexto<Valor>();
-		
-		Stack<HashMap<Id, Valor>> novaPilha = new Stack<HashMap<Id, Valor>>();
-		
-		for (HashMap<Id, T> map : this.pilha){
-			HashMap<Id, Valor> novoMap = new HashMap<Id, Valor>();
-			
-			for(Entry<Id, T> entry : map.entrySet()){
-				novoMap.put(entry.getKey().clone(),
-						((Valor) entry.getValue()).clone());
-			}
-			
-			novaPilha.add(novoMap);
-		}
-		
-		return retorno;
-	}*/
+	 * public Contexto<Valor> clone(){ Contexto<Valor> retorno = new
+	 * Contexto<Valor>();
+	 * 
+	 * Stack<HashMap<Id, Valor>> novaPilha = new Stack<HashMap<Id, Valor>>();
+	 * 
+	 * for (HashMap<Id, T> map : this.pilha){ HashMap<Id, Valor> novoMap = new
+	 * HashMap<Id, Valor>();
+	 * 
+	 * for(Entry<Id, T> entry : map.entrySet()){ novoMap.put(entry.getKey().clone(),
+	 * ((Valor) entry.getValue()).clone()); }
+	 * 
+	 * novaPilha.add(novoMap); }
+	 * 
+	 * return retorno; }
+	 */
 }
