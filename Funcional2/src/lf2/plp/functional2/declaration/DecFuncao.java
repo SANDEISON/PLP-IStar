@@ -12,11 +12,14 @@ import lf2.plp.expressions2.expression.Id;
 import lf2.plp.expressions2.expression.Valor;
 import lf2.plp.expressions2.memory.AmbienteCompilacao;
 import lf2.plp.expressions2.memory.AmbienteExecucao;
+import lf2.plp.expressions2.memory.ContextoExecucao;
 import lf2.plp.expressions2.memory.VariavelJaDeclaradaException;
 import lf2.plp.expressions2.memory.VariavelNaoDeclaradaException;
 import lf2.plp.functional1.declaration.DeclaracaoFuncional;
+import lf2.plp.functional1.memory.ContextoExecucaoFuncional;
 import lf2.plp.functional1.util.TipoFuncao;
 import lf2.plp.functional1.util.TipoPolimorfico;
+import lf2.plp.functional2.Programa;
 import lf2.plp.functional2.expression.ValorFuncao;
 
 /**
@@ -98,7 +101,7 @@ public class DecFuncao implements DeclaracaoFuncional {
 		// Mapeia a pr�pria fun��o no ambiente para permitir recurs�o.
 		ambiente.map(id, tipo);
 
-		boolean result = valorFuncao.checaTipo(ambiente);
+		boolean result = valorFuncao.checaTipo(ambiente) && decRequisito.checaTipo(ambiente);
 		ambiente.restaura();
 		return result;
 	}
@@ -162,7 +165,10 @@ public class DecFuncao implements DeclaracaoFuncional {
 	@Override
 	public void incluir(AmbienteExecucao amb, AmbienteExecucao aux) throws VariavelJaDeclaradaException {
 		amb.map(getId(), aux.get(getId()));
-		
+		if (amb instanceof ContextoExecucao) {
+			ContextoExecucao execucaoFuncional = (ContextoExecucao) amb;
+			execucaoFuncional.addRequisito(id, decRequisito.getListaId());
+		}
 	}
 
 	@Override

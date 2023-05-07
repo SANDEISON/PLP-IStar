@@ -8,6 +8,7 @@ import java.util.StringTokenizer;
 
 import javax.swing.JTextArea;
 
+import lf2.plp.expressions2.expression.Valor;
 import lf2.plp.functional2.parser.Func2Parser;
 
 public class MultiInterpretador {
@@ -47,11 +48,9 @@ public class MultiInterpretador {
 		messageBoard = textAreaMensagens;
 	}
 
-	public void interpretarCodigo(String sourceCode, String listaEntrada,
-			int selectedIndex) {
+	public void interpretarCodigo(String sourceCode, String listaEntrada, int selectedIndex) {
 		try {
-			ByteArrayInputStream fis = new ByteArrayInputStream(sourceCode
-					.getBytes());
+			ByteArrayInputStream fis = new ByteArrayInputStream(sourceCode.getBytes());
 
 //			switch (selectedIndex) {
 //			case EXP1:
@@ -64,7 +63,7 @@ public class MultiInterpretador {
 //				interpretarFunc1(fis);
 //				break;
 //			case FUNC2:
-				interpretarFunc2(fis);
+			interpretarFunc2(fis);
 //				break;
 //			case FUNC3:
 //				interpretarFunc3(fis);
@@ -151,8 +150,11 @@ public class MultiInterpretador {
 
 		prog = Func2Parser.Input();
 
+		prog.checaTipo();
 		messageBoard.setText("sintaxe verificada com sucesso!\n");
-		messageBoard.append("resultado = " + prog.executar().toString());
+		Valor valorFinal = prog.executar();
+		messageBoard.append("resultado = " + valorFinal.toString() + "\n\n");
+		messageBoard.append("requisitos:\n " + prog.getRetornoRequisito());
 	}
 
 //	private void interpretarFunc3(InputStream fis) throws Exception {

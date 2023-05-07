@@ -10,7 +10,7 @@ import lf2.plp.expressions2.memory.VariavelNaoDeclaradaException;
 import lf2.plp.functional1.util.DefFuncao;
 
 public class ContextoExecucaoFuncional extends ContextoExecucao
-		implements AmbienteExecucaoFuncional {
+		implements AmbienteExecucaoFuncional { 
 
 	/**
 	 * A pilha de blocos de funcao deste contexto.
@@ -23,7 +23,7 @@ public class ContextoExecucaoFuncional extends ContextoExecucao
 	public ContextoExecucaoFuncional() {
 		pilhaFuncao = new Stack<HashMap<Id, DefFuncao>>();
 	}
-
+	
 	public void incrementa() {
 		super.incrementa();
 		pilhaFuncao.push(new HashMap<Id, DefFuncao>());

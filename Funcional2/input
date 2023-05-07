@@ -1,3 +1,4 @@
 let req calc fun sum x y = x + y, 
-    req calc fun sub x y = x - y
-        in sum(5, 2)
+    	req calc fun sub x y = x - y,
+			var z = 3
+        		in z
