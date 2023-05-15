@@ -37,15 +37,8 @@ public class ContextoExecucao extends Contexto<Valor> implements AmbienteExecuca
 
 	}
 
-	public void addFuncaoUsada(String funcoes) {
-
-		for (List<Id> ids : requisitos.values()) {
-			for (Id id : ids) {
-				if (funcoes.contains(id.toString())) {
-					funcoesUtilizadas.add(id);
-				}
-			}
-		}
+	public void addFuncaoUsada(Id id) {
+		funcoesUtilizadas.add(id);
 	}
 
 	public String rastrearRequisitos() {
@@ -61,8 +54,11 @@ public class ContextoExecucao extends Contexto<Valor> implements AmbienteExecuca
 					contador++;
 			}
 
-			retorno += "\n - as funções " + funcs + " pertencem ao requisito " + id + "\n" + 
-			" - o requisito " + id + " está sendo utilizado " + (contador / funcs.size()) * 100 + "%\n";
+			if (contador / funcs.size() > 1)
+				contador = 1;
+
+			retorno += "\n - as funções " + funcs + " pertencem ao requisito " + id + "\n" + " - o requisito " + id
+					+ " está sendo utilizado " + (contador / funcs.size()) * 100 + "%\n";
 		}
 
 		return retorno;

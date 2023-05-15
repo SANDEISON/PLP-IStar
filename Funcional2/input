@@ -1,4 +1,7 @@
 let req calc fun sum x y = x + y, 
-    	req calc fun sub x y = x - y,
-			var z = 3
-        		in z
+    req calc fun sub x y = x - y,
+		req calc1 fun suc x = x + 1,
+		req calc1 fun pred x = x - 1,
+		req calc2 fun teste x = sum(x, 3),
+		var z = 3
+        in teste(4)

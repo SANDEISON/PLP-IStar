@@ -1,11 +1,7 @@
 package lf2.plp.functional2.expression;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import lf2.plp.expressions1.util.Tipo;
 import lf2.plp.expressions2.expression.Expressao;
-import lf2.plp.expressions2.expression.Id;
 import lf2.plp.expressions2.expression.Valor;
 import lf2.plp.expressions2.memory.AmbienteCompilacao;
 import lf2.plp.expressions2.memory.AmbienteExecucao;
@@ -49,8 +45,6 @@ public class ExpDeclaracao implements Expressao {
 		declaracao.elabora(ambiente,aux);
 		declaracao.incluir(ambiente,aux);
 		aux.restaura();
-		
-		((ContextoExecucao) ambiente).addFuncaoUsada(expressao.toString());
 		
 		Valor vresult = expressao.avaliar(ambiente);
 		

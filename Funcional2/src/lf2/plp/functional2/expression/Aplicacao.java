@@ -15,6 +15,7 @@ import lf2.plp.expressions2.expression.Id;
 import lf2.plp.expressions2.expression.Valor;
 import lf2.plp.expressions2.memory.AmbienteCompilacao;
 import lf2.plp.expressions2.memory.AmbienteExecucao;
+import lf2.plp.expressions2.memory.ContextoExecucao;
 import lf2.plp.expressions2.memory.VariavelJaDeclaradaException;
 import lf2.plp.expressions2.memory.VariavelNaoDeclaradaException;
 import lf2.plp.functional1.util.DefFuncao;
@@ -45,6 +46,7 @@ public class Aplicacao implements Expressao {
 		includeValueBindings(ambiente, mapIdValor);
 
 		if(funcao.getId() != null){
+			((ContextoExecucao) ambiente).addFuncaoUsada(funcao.getId());
 			ambiente.map(funcao.getId(), funcao.clone());
 		}
 		Expressao exp = funcao.getExp().clone();
