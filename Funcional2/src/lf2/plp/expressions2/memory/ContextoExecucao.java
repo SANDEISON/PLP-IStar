@@ -38,7 +38,8 @@ public class ContextoExecucao extends Contexto<Valor> implements AmbienteExecuca
 	}
 
 	public void addFuncaoUsada(Id id) {
-		funcoesUtilizadas.add(id);
+		if (!funcoesUtilizadas.contains(id))
+			funcoesUtilizadas.add(id);
 	}
 
 	public String rastrearRequisitos() {
